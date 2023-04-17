@@ -82,7 +82,7 @@ Curabitur dignissim libero in ex dictum, vel laoreet nunc lobortis.
 ```c++
 #include "iostream"
 
-void main(int argc, char[] **argv) {
+int main(int argc, char[] **argv) {
   std::cout << "Hello, World!" << std::end;
   return 0;
 }
