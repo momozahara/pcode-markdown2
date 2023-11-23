@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: pcode-markdown2-deployment
+  namespace: pcode
+  labels:
+    app: pcode-markdown2
+
+spec:
+  selector:
+    matchLabels:
+      app: pcode-markdown2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pcode-markdown2
+    spec:
+      containers:
+      - name: pcode-markdown2-image
+        image: ghcr.io/momozahara/pcode-markdown2:latest
+        resources:
+          cpu: 0.1
+          memory: 64Mi
+        imagePullPolicy: Always
+        ports:
+          -  containerPort: 3000
+      imagePullSecrets:
+      - name: ghcr
