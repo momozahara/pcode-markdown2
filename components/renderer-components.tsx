@@ -1,13 +1,11 @@
-import {
-  CodeProps,
-  HeadingProps,
-  ReactMarkdownProps,
-} from "react-markdown/lib/ast-to-react";
-
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import highlightTheme from "react-syntax-highlighter/dist/esm/styles/prism/one-light";
-
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import {
+  type CodeProps,
+  type HeadingProps,
+  type ReactMarkdownProps,
+} from "react-markdown/lib/ast-to-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export function codeRenderer({
   inline,
@@ -15,7 +13,8 @@ export function codeRenderer({
   children,
   ...props
 }: CodeProps) {
-  const match = /language-(\w+)/.exec(className || "");
+  const match = /language-(\w+)/.exec(className ?? "");
+
   return !inline && match ? (
     <div
       style={{
@@ -24,7 +23,7 @@ export function codeRenderer({
     >
       <SyntaxHighlighter
         language={match[1]}
-        style={highlightTheme as any}
+        style={oneLight as any}
         PreTag="div"
         {...props}
       >
@@ -123,7 +122,7 @@ export function headingRenderer(props: HeadingProps) {
     if (child.children.length <= 0) {
       return <></>;
     }
-    if (child.children[0].type === "text") {
+    if (child.children[0]?.type === "text") {
       href = `${child.children[0].value
         .replace(/[^a-zA-Z ]/g, "")
         .toLowerCase()}`;

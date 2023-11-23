@@ -25,12 +25,14 @@
       "error",
       {
         "ObjectExpression": "always",
-        "ObjectPattern": { "multiline": true }
+        "ObjectPattern": {
+          "multiline": true
+        }
       }
     ]
   },
   "ignorePatterns": [
-    "postcss.config.js",
-    "tailwind.config.js"
+    "*.config.js",
+    "*.config.js"
   ]
 }

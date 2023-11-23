@@ -1,12 +1,8 @@
 import { useEffect } from "react";
-
 import "react-markdown-css/styles/markdown.css";
-
 import ReactMarkdown from "react-markdown";
-
-import remarkGfm from "remark-gfm";
-
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 
 import RendererComponent from "./renderer-components";
 
@@ -16,8 +12,8 @@ interface Props {
 
 export default function Renderer({ data }: Props) {
   useEffect(() => {
-    let target = location.hash.replaceAll("#", "");
-    if (target !== "") {
+    const target = location.hash.replaceAll("#", "");
+    if (target.length !== 0) {
       document.getElementById(target)?.scrollIntoView();
     }
   }, []);

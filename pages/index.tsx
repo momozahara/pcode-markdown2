@@ -12,7 +12,10 @@ interface Props {
 
 export default function Home({ data }: Props) {
   return (
-    <main data-color-mode="light">
+    <main
+      id="test"
+      data-color-mode="light"
+    >
       <Renderer data={data} />
     </main>
   );
@@ -22,7 +25,6 @@ export async function getServerSideProps() {
   let data = fs.readFileSync("md/readme.md", "utf-8");
 
   return {
-    // eslint-disable-next-line object-curly-newline
     props: {
       data: data,
     },
